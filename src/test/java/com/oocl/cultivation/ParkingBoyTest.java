@@ -70,10 +70,10 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
 
         // When
-        Car fetchedCar = parkingBoy.fetch(null);
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkingBoy.fetch(null));
 
         // Then
-        assertNull(fetchedCar);
+        assertEquals("Please provide your parking ticket",exception.getMessage());
     }
     
     @Test
