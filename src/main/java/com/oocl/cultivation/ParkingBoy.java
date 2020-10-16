@@ -12,8 +12,13 @@ public class ParkingBoy {
 
     public ParkingTicket park(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
-        parkingTicketCarMap.put(parkingTicket,car);
-        return parkingTicket;
+        if(!parkingTicketCarMap.containsValue(car)){
+            parkingTicketCarMap.put(parkingTicket,car);
+            return parkingTicket;
+        }else{
+            return null;
+        }
+
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
