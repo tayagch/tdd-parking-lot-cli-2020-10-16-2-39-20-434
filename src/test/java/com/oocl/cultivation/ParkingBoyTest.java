@@ -94,12 +94,22 @@ class ParkingBoyTest {
     @Test
     public void should_return_park_failed_and_no_ticket_when_park_a_car_given_parking_lot_capacity_is_1_and_parked_a_car(){
         // Given
-        Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
-        ParkingTicket parkingTicket = parkingBoy.park(car);
+        Car car;
+        ParkingTicket parkingTicket;
+
+        // this will populate the parking lot into 9
+        for(int index = 0; index < 10; index++){
+            car = new Car();
+            parkingBoy.park(car);
+        }
+
+        Car car2 = new Car();
+        parkingBoy.park(car2);
 
         // When
-        ParkingTicket failedParking = parkingBoy.park(car);
+        Car car3 = new Car();
+        ParkingTicket failedParking = parkingBoy.park(car3);
 
         // Then
         assertNull(failedParking);
