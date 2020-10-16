@@ -90,4 +90,18 @@ class ParkingBoyTest {
         // Then
         assertNull(fetchedCarWithUsedTicket);
     }
+
+    @Test
+    public void should_return_park_failed_and_no_ticket_when_park_a_car_given_parking_lot_capacity_is_1_and_parked_a_car(){
+        // Given
+        Car car = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+
+        // When
+        ParkingTicket failedParking = parkingBoy.park(car);
+
+        // Then
+        assertNull(failedParking);
+    }
 }
