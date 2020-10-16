@@ -23,10 +23,14 @@ public class ParkingLot {
 
     }
 
-    public Car fetch(ParkingTicket parkingTicket) {
+    public Car fetch(ParkingTicket parkingTicket) throws UnrecognizedTicketException {
         Car car = parkingTicketCarMap.get(parkingTicket);
         parkingTicketCarMap.remove(parkingTicket);
-        return car;
+        if(car != null){
+            return car;
+        }
+        else
+            throw new UnrecognizedTicketException("Unrecognized Parking Ticket");
     }
 
     public int getLotCapacity() {

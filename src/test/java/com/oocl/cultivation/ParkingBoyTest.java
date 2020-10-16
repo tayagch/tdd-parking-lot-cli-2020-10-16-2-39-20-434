@@ -58,10 +58,10 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket = parkingBoy.park(car);
 
         // When
-        Car fetchedCar = parkingBoy.fetch(new ParkingTicket());
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkingBoy.fetch(new ParkingTicket()));
 
         // Then
-        assertNull(fetchedCar);
+        assertEquals("Unrecognized Parking Ticket",exception.getMessage());
     }
     
     @Test
