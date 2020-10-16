@@ -101,9 +101,9 @@ class ParkingBoyTest {
 
         // When
         Car car3 = new Car();
-        ParkingTicket failedParking = parkingBoy.park(car3);
+        Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> parkingBoy.park(car3));
 
         // Then
-        assertNull(failedParking);
+        assertEquals("Not enough position",exception.getMessage());
     }
 }

@@ -18,7 +18,7 @@ public class ParkingLot {
             parkingTicketCarMap.put(parkingTicket,car);
             return parkingTicket;
         }else{
-            return null;
+            throw new IndexOutOfBoundsException("Not enough position");
         }
 
     }
