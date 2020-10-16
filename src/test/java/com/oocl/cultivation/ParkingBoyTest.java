@@ -2,6 +2,10 @@ package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyTest {
@@ -105,5 +109,18 @@ class ParkingBoyTest {
 
         // Then
         assertEquals("Not enough position",exception.getMessage());
+    }
+    
+    @Test
+    public void should_park_to_second_parkingLot_when_first_parkingLot_is_full_given_parkingBoy_first_parkingLot_capacity_is_10(){
+        // Given
+        ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(0,10));
+        Car car = new Car();
+
+        // When
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+        // Then
+
+        assertNotNull(parkingTicket);
     }
 }
