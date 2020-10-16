@@ -12,7 +12,7 @@ public class ParkingBoy {
 
     public ParkingTicket park(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
-        if(!parkingTicketCarMap.containsValue(car)){
+        if(!parkingTicketCarMap.containsValue(car)  && parkingTicketCarMap.size() != 10){
             parkingTicketCarMap.put(parkingTicket,car);
             return parkingTicket;
         }else{
