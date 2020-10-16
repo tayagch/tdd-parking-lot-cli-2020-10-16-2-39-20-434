@@ -9,7 +9,7 @@ class ParkingBoyTest {
     public void should_return_parkingTicket_when_parkingBoy_park_car_given_parkingBoy_a_car(){
         // Given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
 
         // When
         ParkingTicket parkingTicket = parkingBoy.park(car);
@@ -22,7 +22,7 @@ class ParkingBoyTest {
     public void should_return_carFetched_when_fetch_given_parkingTicket(){
         // Given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
         ParkingTicket parkingTicket = parkingBoy.park(car);
 
         // When
@@ -37,7 +37,7 @@ class ParkingBoyTest {
         // Given
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
         ParkingTicket parkingTicket1 = parkingBoy.park(car1);
         ParkingTicket parkingTicket2 = parkingBoy.park(car2);
 
@@ -54,7 +54,7 @@ class ParkingBoyTest {
     public void should_return_no_car_when_fetch_a_car_given_wrong_ticket(){
         // Given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
         ParkingTicket parkingTicket = parkingBoy.park(car);
 
         // When
@@ -67,7 +67,7 @@ class ParkingBoyTest {
     @Test
     public void should_return_no_car_when_fetch_a_car_given_no_ticket(){
         // Given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
 
         // When
         Car fetchedCar = parkingBoy.fetch(null);
@@ -80,7 +80,7 @@ class ParkingBoyTest {
     public void should_return_no_car_when_fetch_a_car_given_parkingTicket_already_used(){
         // Given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
         ParkingTicket parkingTicket = parkingBoy.park(car);
 
         // When
@@ -94,15 +94,7 @@ class ParkingBoyTest {
     @Test
     public void should_return_park_failed_and_no_ticket_when_park_a_car_given_parking_lot_capacity_is_1_and_parked_a_car(){
         // Given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
-        Car car;
-        ParkingTicket parkingTicket;
-
-        // this will populate the parking lot into 9
-        for(int index = 0; index < 10; index++){
-            car = new Car();
-            parkingBoy.park(car);
-        }
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
 
         Car car2 = new Car();
         parkingBoy.park(car2);
