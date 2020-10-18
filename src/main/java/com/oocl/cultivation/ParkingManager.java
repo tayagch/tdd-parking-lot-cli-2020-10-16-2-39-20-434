@@ -12,4 +12,7 @@ public class ParkingManager {
     }
 
 
+    public ParkingTicket park(ParkingBoy parkingBoy, Car car) {
+        return null;
+    }
 }
