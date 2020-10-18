@@ -13,8 +13,8 @@ public class ParkingManagerTest {
     public void should_return_management_list_when_parkingManager_add_parking_boy_given_parkingManager_add_parking_boy_to_management_list(){
         // Given
         List<ParkingLot> parkingLots1 = Arrays.asList(new ParkingLot(10),new ParkingLot(10));
-        List<ParkingLot> parkingLots2 = Arrays.asList(new ParkingLot(10),new ParkingLot(10));
-        List<ParkingLot> parkingLots3 = Arrays.asList(new ParkingLot(10),new ParkingLot(10));
+        List<ParkingLot> parkingLots2 = Arrays.asList(new ParkingLot(10),new ParkingLot(15));
+        List<ParkingLot> parkingLots3 = Arrays.asList(new ParkingLot(15),new ParkingLot(10));
         ParkingBoy parkingBoy1 = new ParkingBoy(parkingLots1);
         ParkingBoy parkingBoy2 = new ParkingBoy(parkingLots1);
         SmartParkingBoy smartParkingBoy1 = new SmartParkingBoy(parkingLots2);
