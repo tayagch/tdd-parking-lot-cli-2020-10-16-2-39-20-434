@@ -122,4 +122,19 @@ class ParkingBoyTest {
 
         assertNotNull(parkingTicket);
     }
+
+    @Test
+    public void should_fetch_correct_car_from_parkingLot_2_when_parkingBoy_park_given_parkingBoy_park_parking_lot_2(){
+        // Given
+        List<ParkingLot> parkingLots = Arrays.asList(new ParkingLot(0), new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+
+        // When
+        Car fetchedCar = parkingBoy.fetch(parkingTicket);
+
+        // Then
+        assertSame(car,fetchedCar);
+    }
 }
