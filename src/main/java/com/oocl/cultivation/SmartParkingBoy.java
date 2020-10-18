@@ -1,7 +1,7 @@
 package com.oocl.cultivation;
 
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 public class SmartParkingBoy extends ParkingBoy{
 
@@ -11,5 +11,11 @@ public class SmartParkingBoy extends ParkingBoy{
 
     public SmartParkingBoy(List<ParkingLot> parkingLotList) {
         super(parkingLotList);
+    }
+
+    @Override
+    public ParkingTicket park(Car car) {
+        ParkingLot highestCapacityLot = getParkingLotList().stream().max(Comparator.comparing(ParkingLot::getLotCapacity)).orElse(getParkingLot());
+        return highestCapacityLot.park(car);
     }
 }
