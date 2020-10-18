@@ -64,4 +64,16 @@ public class SmartParkingBoyTest {
         // Then
         assertEquals("Unrecognized Parking Ticket",exception.getMessage());
     }
+
+    @Test
+    public void should_return_no_car_when_fetch_a_car_given_no_ticket(){
+        // Given
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+
+        // When
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkingBoy.fetch(null));
+
+        // Then
+        assertEquals("Please provide your parking ticket",exception.getMessage());
+    }
 }
