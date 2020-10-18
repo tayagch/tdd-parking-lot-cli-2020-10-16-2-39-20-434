@@ -8,6 +8,6 @@ public class ParkingManager {
     }
 
     public ManagementList getManagementList() {
-        return null;
+        return managementList;
     }
 }
