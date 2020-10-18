@@ -40,6 +40,10 @@ public class ParkingLot {
         return lotCapacity;
     }
 
+    public double getPositionRate(){
+        return getAvailableLots() / getLotCapacity();
+    }
+
     public void setLotCapacity(int lotCapacity) {
         this.lotCapacity = lotCapacity;
     }

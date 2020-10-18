@@ -115,7 +115,7 @@ public class SuperSmartParkingBoyTest {
     public void should_return_parkingTicket_for_parking_lot_with_larger_available_position_rate_when_superSmartParkingBoy_park_given_parking_lot_with_15_capacity_and_20_capacity(){
         // Given
         ParkingLot parkingLot1 = new ParkingLot(15);
-        ParkingLot parkingLot2 = new ParkingLot(20);
+        ParkingLot parkingLot2 = new ParkingLot(10);
         List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
         Car car1 = new Car();
@@ -130,6 +130,7 @@ public class SuperSmartParkingBoyTest {
         // Then
 
         assertNotNull(parkingTicket3);
+        assertTrue(parkingLot2.getParkingTicketCarMap().containsKey(parkingTicket2));
         assertTrue(parkingLot1.getParkingTicketCarMap().containsKey(parkingTicket3));
     }
 }
