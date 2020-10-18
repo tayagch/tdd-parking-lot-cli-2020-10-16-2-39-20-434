@@ -26,7 +26,7 @@ public class ParkingBoy {
     public ParkingTicket park(Car car) {
         return Optional.ofNullable(parkingLotList).map(lots -> {
             for (ParkingLot lot:lots) {
-                if(lot.getLotCapacity() > 0){
+                if(lot.getAvailableLots() == 0){
                     return lot;
                 }
             }
@@ -47,6 +47,5 @@ public class ParkingBoy {
             }
             throw new UnrecognizedTicketException("Unrecognized Parking Ticket");
         }).orElse(parkingLot).fetch(parkingTicket);
-//        return parkingLot.fetch(parkingTicket);
     }
 }

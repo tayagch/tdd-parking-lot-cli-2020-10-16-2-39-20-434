@@ -114,18 +114,46 @@ public class SmartParkingBoyTest {
     @Test
     public void should_park_on_parking_lot_contains_more_capacity_when_smartParkBoy_park_given_three_parking_lot(){
         // Given
-        ParkingLot parkingLot1 = new ParkingLot(9);
-        ParkingLot parkingLot2 = new ParkingLot(8);
+        ParkingLot parkingLot1 = new ParkingLot(10);
+        ParkingLot parkingLot2 = new ParkingLot(10);
         ParkingLot parkingLot3 = new ParkingLot(10);
         List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2, parkingLot3);
         SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
-        Car car = new Car();
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
 
         // When
-        ParkingTicket parkingTicket = parkingBoy.park(car);
+        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
+        ParkingTicket parkingTicket3 = parkingBoy.park(car3);
 
         // Then
-        assertNotNull(parkingTicket);
-        assertTrue(parkingLot3.getParkingTicketCarMap().containsKey(parkingTicket));
+        assertNotNull(parkingTicket3);
+        assertTrue(parkingLot3.getParkingTicketCarMap().containsKey(parkingTicket3));
+    }
+
+    @Test
+    public void should_fetch_correct_car_from_parkingLot_3_when_parkingBoy_park_given_parkingBoy_parked_at_parking_lot_3(){
+        // Given
+        ParkingLot parkingLot1 = new ParkingLot(10);
+        ParkingLot parkingLot2 = new ParkingLot(10);
+        ParkingLot parkingLot3 = new ParkingLot(10);
+        List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2, parkingLot3);
+        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+
+        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
+        ParkingTicket parkingTicket3 = parkingBoy.park(car3);
+
+        // When
+        Car fetchedCar = parkingBoy.fetch(parkingTicket3);
+
+        // Then
+        assertSame(car3,fetchedCar);
     }
 }
