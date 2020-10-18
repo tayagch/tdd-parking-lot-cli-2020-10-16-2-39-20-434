@@ -1,10 +1,7 @@
 package com.oocl.cultivation;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 public class ParkingBoy {
     private ParkingLot parkingLot;
@@ -16,6 +13,14 @@ public class ParkingBoy {
 
     public ParkingBoy(List<ParkingLot> parkingLotList) {
         this.parkingLotList = parkingLotList;
+    }
+
+    public ParkingLot getParkingLot() {
+        return parkingLot;
+    }
+
+    public List<ParkingLot> getParkingLotList(){
+        return parkingLotList;
     }
 
     public ParkingTicket park(Car car) {
