@@ -32,4 +32,22 @@ public class SmartParkingBoyTest {
         // Then
         assertSame(car,fetchedCar);
     }
+
+    @Test
+    public void should_return_two_cars_when_fetch_two_cars_with_ticket_given_smart_parking_boy_park_two_cars(){
+        // Given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(new ParkingLot(10));
+        ParkingTicket parkingTicket1 = smartParkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = smartParkingBoy.park(car2);
+
+        // When
+        Car fetchedCar1 = smartParkingBoy.fetch(parkingTicket1);
+        Car fetchedCar2 = smartParkingBoy.fetch(parkingTicket2);
+
+        // Then
+        assertSame(car1,fetchedCar1);
+        assertSame(car2,fetchedCar2);
+    }
 }
