@@ -26,7 +26,7 @@ public class ParkingBoy {
     public ParkingTicket park(Car car) {
         return Optional.ofNullable(parkingLotList).map(lots -> {
             for (ParkingLot lot:lots) {
-                if(lot.getAvailableLots() == 0){
+                if(lot.getAvailableLots() != 0){
                     return lot;
                 }
             }
