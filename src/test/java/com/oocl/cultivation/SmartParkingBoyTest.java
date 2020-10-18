@@ -91,4 +91,20 @@ public class SmartParkingBoyTest {
         // Then
         assertEquals("Unrecognized Parking Ticket",exception.getMessage());
     }
+
+    @Test
+    public void should_return_park_failed_and_no_ticket_when_park_a_car_given_parking_lot_capacity_is_1_and_parked_a_car(){
+        // Given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(new ParkingLot(1));
+
+        Car car2 = new Car();
+        smartParkingBoy.park(car2);
+
+        // When
+        Car car3 = new Car();
+        Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> smartParkingBoy.park(car3));
+
+        // Then
+        assertEquals("Not enough position",exception.getMessage());
+    }
 }
