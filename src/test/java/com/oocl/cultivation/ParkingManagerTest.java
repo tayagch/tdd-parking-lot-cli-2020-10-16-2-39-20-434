@@ -84,9 +84,9 @@ public class ParkingManagerTest {
         ParkingTicket parkingTicket = parkingManager.park(parkingBoy1,car);
 
         // When
-        Car fetchedCar = parkingManager.fetch(parkingBoy2,parkingTicket);
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkingManager.fetch(parkingBoy2,parkingTicket));
 
         // Then
-        assertSame(car,fetchedCar);
+        assertEquals("Wrong Parking Boy",exception.getMessage());
     }
 }
