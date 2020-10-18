@@ -63,7 +63,7 @@ public class ParkingManagerTest {
         ParkingTicket parkingTicket = parkingManager.park(parkingBoy1,car);
 
         // When
-        Car fetchedCar = parkingManager.fetch(parkingTicket);
+        Car fetchedCar = parkingManager.fetch(parkingBoy1,parkingTicket);
 
         // Then
         assertSame(car,fetchedCar);
