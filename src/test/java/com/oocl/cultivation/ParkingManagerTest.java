@@ -1,6 +1,5 @@
 package com.oocl.cultivation;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public class ParkingManagerTest {
     List<SmartParkingBoy> smartParkingBoyList;
     List<SuperSmartParkingBoy> superSmartParkingBoyList;
 
-    @Before
     public void setup(){
         parkingLots1 = Arrays.asList(new ParkingLot(10),new ParkingLot(10));
         parkingLots2 = Arrays.asList(new ParkingLot(10),new ParkingLot(15));
@@ -40,15 +38,15 @@ public class ParkingManagerTest {
         superSmartParkingBoy1 = new SuperSmartParkingBoy(parkingLots3);
         superSmartParkingBoy2 = new SuperSmartParkingBoy(parkingLots3);
 
-        parkingBoyList = Arrays.asList(parkingBoy1, parkingBoy2);
-        smartParkingBoyList = Arrays.asList(smartParkingBoy1,smartParkingBoy2);
-        superSmartParkingBoyList = Arrays.asList(superSmartParkingBoy1,superSmartParkingBoy2);
     }
 
     @Test
-    public void should_return_management_list_when_parkingManager_add_parking_boy_given_parkingManager_add_parking_boy_to_management_list(){
+    public void should_return_management_list_when_parkingManager_add_parking_boy_given_parkingboy_list(){
         // Given
-
+        setup();
+        parkingBoyList = Arrays.asList(parkingBoy1, parkingBoy2);
+        smartParkingBoyList = Arrays.asList(smartParkingBoy1,smartParkingBoy2);
+        superSmartParkingBoyList = Arrays.asList(superSmartParkingBoy1,superSmartParkingBoy2);
 
         // When
         ParkingManager parkingManger = new ParkingManager(new ManagementList(parkingBoyList, smartParkingBoyList, superSmartParkingBoyList));
