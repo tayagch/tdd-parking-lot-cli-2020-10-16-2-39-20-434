@@ -2,6 +2,9 @@ package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -106,5 +109,23 @@ public class SmartParkingBoyTest {
 
         // Then
         assertEquals("Not enough position",exception.getMessage());
+    }
+    
+    @Test
+    public void should_park_on_parking_lot_contains_more_capacity_when_smartParkBoy_park_given_three_parking_lot(){
+        // Given
+        ParkingLot parkingLot1 = new ParkingLot(9);
+        ParkingLot parkingLot2 = new ParkingLot(8);
+        ParkingLot parkingLot3 = new ParkingLot(10);
+        List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2, parkingLot3);
+        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        Car car = new Car();
+
+        // When
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+
+        // Then
+        assertNotNull(parkingTicket);
+        assertTrue(parkingLot3.getParkingTicketCarMap().containsKey(parkingTicket));
     }
 }
