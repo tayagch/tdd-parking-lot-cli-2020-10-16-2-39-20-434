@@ -16,6 +16,11 @@ public class ParkingManager {
     }
 
     public Car fetch(ParkingBoy parkingBoy, ParkingTicket parkingTicket) {
-        return parkingBoy.fetch(parkingTicket);
+        if(parkingBoy.getParkingLot().getParkingTicketCarMap().containsKey(parkingTicket)){
+            return parkingBoy.fetch(parkingTicket);
+        }
+        else{
+            throw new UnrecognizedTicketException("Wrong Parking Boy");
+        }
     }
 }
