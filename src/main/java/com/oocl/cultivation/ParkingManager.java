@@ -11,8 +11,7 @@ public class ParkingManager {
         return managementList;
     }
 
-
     public ParkingTicket park(ParkingBoy parkingBoy, Car car) {
-        return null;
+        return parkingBoy.park(car);
     }
 }

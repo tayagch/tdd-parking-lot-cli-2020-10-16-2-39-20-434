@@ -40,6 +40,7 @@ public class ParkingManagerTest {
         ParkingManager parkingManager = new ParkingManager(managementList);
         parkingManager.getManagementList().setParkingBoyList(parkingBoys);
         Car car = new Car();
+
         // When
         ParkingTicket parkingTicket = parkingManager.park(parkingBoy1,car);
 
