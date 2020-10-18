@@ -47,4 +47,25 @@ public class ParkingManagerTest {
         // Then
         assertNotNull(parkingTicket);
     }
+
+    @Test
+    public void should_return_correct_car_when_parkingmanager_specify_parkingboy_fetch_given_parkingticket(){
+        // Given
+        ParkingLot parkingLot1 = new ParkingLot(10);
+        ParkingLot parkingLot2 = new ParkingLot(10);
+        ParkingBoy parkingBoy1 = new ParkingBoy(parkingLot1);
+        ParkingBoy parkingBoy2 = new ParkingBoy(parkingLot2);
+        List<ParkingBoy> parkingBoys = Arrays.asList(parkingBoy1, parkingBoy2);
+        ManagementList managementList = new ManagementList();
+        ParkingManager parkingManager = new ParkingManager(managementList);
+        parkingManager.getManagementList().setParkingBoyList(parkingBoys);
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingManager.park(parkingBoy1,car);
+
+        // When
+        Car fetchedCar = parkingManager.fetch(parkingTicket);
+
+        // Then
+        assertSame(car,fetchedCar);
+    }
 }

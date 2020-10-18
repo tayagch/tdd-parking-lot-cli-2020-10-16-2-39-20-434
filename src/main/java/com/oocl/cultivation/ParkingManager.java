@@ -14,4 +14,9 @@ public class ParkingManager {
     public ParkingTicket park(ParkingBoy parkingBoy, Car car) {
         return parkingBoy.park(car);
     }
+
+    public Car fetch(ParkingTicket parkingTicket) {
+
+        return null;
+    }
 }
