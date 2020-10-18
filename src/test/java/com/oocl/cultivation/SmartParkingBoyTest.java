@@ -118,15 +118,15 @@ public class SmartParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(10);
         ParkingLot parkingLot3 = new ParkingLot(10);
         List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2, parkingLot3);
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
         Car car1 = new Car();
         Car car2 = new Car();
         Car car3 = new Car();
 
         // When
-        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
-        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
-        ParkingTicket parkingTicket3 = parkingBoy.park(car3);
+        ParkingTicket parkingTicket1 = smartParkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = smartParkingBoy.park(car2);
+        ParkingTicket parkingTicket3 = smartParkingBoy.park(car3);
 
         // Then
         assertNotNull(parkingTicket3);
@@ -140,18 +140,18 @@ public class SmartParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(10);
         ParkingLot parkingLot3 = new ParkingLot(10);
         List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2, parkingLot3);
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
 
         Car car1 = new Car();
         Car car2 = new Car();
         Car car3 = new Car();
 
-        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
-        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
-        ParkingTicket parkingTicket3 = parkingBoy.park(car3);
+        ParkingTicket parkingTicket1 = smartParkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = smartParkingBoy.park(car2);
+        ParkingTicket parkingTicket3 = smartParkingBoy.park(car3);
 
         // When
-        Car fetchedCar = parkingBoy.fetch(parkingTicket3);
+        Car fetchedCar = smartParkingBoy.fetch(parkingTicket3);
 
         // Then
         assertSame(car3,fetchedCar);
