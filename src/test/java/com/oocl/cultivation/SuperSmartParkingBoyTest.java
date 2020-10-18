@@ -112,7 +112,7 @@ public class SuperSmartParkingBoyTest {
     }
 
     @Test
-    public void should_return_parkingTicket_for_parking_lot_with_larger_available_position_rate_when_superSmartParkingBoy_park_given_parking_lot_with_15_capacity_and_20_capacity(){
+    public void should_return_parkingTicket_for_parking_lot_with_larger_available_position_rate_when_superSmartParkingBoy_park_given_parking_lot_with_15_capacity_and_10_capacity(){
         // Given
         ParkingLot parkingLot1 = new ParkingLot(15);
         ParkingLot parkingLot2 = new ParkingLot(10);
