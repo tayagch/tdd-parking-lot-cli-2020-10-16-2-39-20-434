@@ -118,4 +118,35 @@ public class ParkingManagerTest {
         assertNotNull(parkingTicket3);
         assertTrue(parkingLot3.getParkingTicketCarMap().containsKey(parkingTicket3));
     }
+    
+    @Test
+    public void should_return_correct_car_when_parkingmanager_specify_smartparking_boy_fetch_given_correct_parking_ticket(){
+        // Given
+        ParkingLot parkingLot1 = new ParkingLot(10);
+        ParkingLot parkingLot2 = new ParkingLot(10);
+        ParkingLot parkingLot3 = new ParkingLot(10);
+        List<ParkingLot> parkingLots1 = Arrays.asList(parkingLot1, parkingLot2);
+        SmartParkingBoy smartParkingBoy1 = new SmartParkingBoy(parkingLots1);
+        SmartParkingBoy smartParkingBoy2 = new SmartParkingBoy(parkingLot3);
+        List<ParkingBoy> parkingBoys = Arrays.asList(smartParkingBoy1, smartParkingBoy2);
+        ManagementList managementList = new ManagementList();
+        ParkingManager parkingManager = new ParkingManager(managementList);
+        parkingManager.getManagementList().setParkingBoyList(parkingBoys);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        ParkingTicket parkingTicket1 = parkingManager.park(smartParkingBoy1,car1);
+        ParkingTicket parkingTicket2 = parkingManager.park(smartParkingBoy1,car2);
+        ParkingTicket parkingTicket3 = parkingManager.park(smartParkingBoy2,car3);
+
+        // When
+        Car fetchedCar1 = parkingManager.fetch(smartParkingBoy1,parkingTicket1);
+        Car fetchedCar2 = parkingManager.fetch(smartParkingBoy1,parkingTicket2);
+        Car fetchedCar3 = parkingManager.fetch(smartParkingBoy2,parkingTicket3);
+
+        // Then
+        assertSame(car1,fetchedCar1);
+        assertSame(car2,fetchedCar2);
+        assertSame(car3,fetchedCar3);
+    }
 }
