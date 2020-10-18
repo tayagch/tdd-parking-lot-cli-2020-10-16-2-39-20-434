@@ -133,4 +133,27 @@ public class SuperSmartParkingBoyTest {
         assertTrue(parkingLot2.getParkingTicketCarMap().containsKey(parkingTicket2));
         assertTrue(parkingLot1.getParkingTicketCarMap().containsKey(parkingTicket3));
     }
+
+    @Test
+    public void should_return_correct_car_when_superSmartParkingBoy_fetch_given_two_parking_lots_parked_on_which_has_larger_position_rate(){
+        // Given
+        ParkingLot parkingLot1 = new ParkingLot(15);
+        ParkingLot parkingLot2 = new ParkingLot(10);
+        List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+
+        ParkingTicket parkingTicket1 = superSmartParkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = superSmartParkingBoy.park(car2);
+        ParkingTicket parkingTicket3 = superSmartParkingBoy.park(car3);
+        // When
+        Car fetchedCar1 = superSmartParkingBoy.fetch(parkingTicket2);
+        Car fetchedCar2 = superSmartParkingBoy.fetch(parkingTicket3);
+
+        // Then
+        assertSame(car1,fetchedCar1);
+        assertSame(car2,fetchedCar2);
+    }
 }
