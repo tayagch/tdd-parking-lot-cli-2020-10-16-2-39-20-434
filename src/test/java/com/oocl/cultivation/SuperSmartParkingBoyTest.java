@@ -148,12 +148,13 @@ public class SuperSmartParkingBoyTest {
         ParkingTicket parkingTicket1 = superSmartParkingBoy.park(car1);
         ParkingTicket parkingTicket2 = superSmartParkingBoy.park(car2);
         ParkingTicket parkingTicket3 = superSmartParkingBoy.park(car3);
+
         // When
         Car fetchedCar1 = superSmartParkingBoy.fetch(parkingTicket2);
         Car fetchedCar2 = superSmartParkingBoy.fetch(parkingTicket3);
 
         // Then
-        assertSame(car1,fetchedCar1);
-        assertSame(car2,fetchedCar2);
+        assertSame(car2,fetchedCar1);
+        assertSame(car3,fetchedCar2);
     }
 }
