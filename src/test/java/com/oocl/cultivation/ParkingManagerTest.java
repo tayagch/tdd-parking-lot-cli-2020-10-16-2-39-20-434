@@ -87,7 +87,7 @@ public class ParkingManagerTest {
         Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkingManager.fetch(parkingBoy2,parkingTicket));
 
         // Then
-        assertEquals("Wrong Parking Boy",exception.getMessage());
+        assertEquals("Unrecognized Parking Ticket",exception.getMessage());
     }
 
     @Test

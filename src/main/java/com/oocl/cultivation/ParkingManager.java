@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import java.util.Optional;
+
 public class ParkingManager {
     private ManagementList managementList;
 
@@ -15,12 +17,11 @@ public class ParkingManager {
         return parkingBoy.park(car);
     }
 
+    public ParkingTicket park(SmartParkingBoy parkingBoy, Car car) {
+        return parkingBoy.park(car);
+    }
+
     public Car fetch(ParkingBoy parkingBoy, ParkingTicket parkingTicket) {
-        if(parkingBoy.getParkingLot().getParkingTicketCarMap().containsKey(parkingTicket)){
-            return parkingBoy.fetch(parkingTicket);
-        }
-        else{
-            throw new UnrecognizedTicketException("Wrong Parking Boy");
-        }
+        return parkingBoy.fetch(parkingTicket);
     }
 }
