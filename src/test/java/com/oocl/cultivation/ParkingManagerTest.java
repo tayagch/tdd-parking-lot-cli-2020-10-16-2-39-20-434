@@ -89,4 +89,33 @@ public class ParkingManagerTest {
         // Then
         assertEquals("Wrong Parking Boy",exception.getMessage());
     }
+
+    @Test
+    public void should_return_parking_ticket_when_parkingmanager_specify_smartparkingboy_park_given_managementlist_and_car(){
+        // Given
+        ParkingLot parkingLot1 = new ParkingLot(10);
+        ParkingLot parkingLot2 = new ParkingLot(10);
+        ParkingLot parkingLot3 = new ParkingLot(10);
+        List<ParkingLot> parkingLots1 = Arrays.asList(parkingLot1, parkingLot2);
+        SmartParkingBoy smartParkingBoy1 = new SmartParkingBoy(parkingLots1);
+        SmartParkingBoy smartParkingBoy2 = new SmartParkingBoy(parkingLot3);
+        List<ParkingBoy> parkingBoys = Arrays.asList(smartParkingBoy1, smartParkingBoy2);
+        ManagementList managementList = new ManagementList();
+        ParkingManager parkingManager = new ParkingManager(managementList);
+        parkingManager.getManagementList().setParkingBoyList(parkingBoys);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+
+        // When
+        ParkingTicket parkingTicket1 = parkingManager.park(smartParkingBoy1,car1);
+        ParkingTicket parkingTicket2 = parkingManager.park(smartParkingBoy1,car2);
+        ParkingTicket parkingTicket3 = parkingManager.park(smartParkingBoy2,car3);
+
+        // Then
+        assertNotNull(parkingTicket1);
+        assertNotNull(parkingTicket2);
+        assertNotNull(parkingTicket3);
+        assertTrue(parkingLot3.getParkingTicketCarMap().containsKey(parkingTicket3));
+    }
 }
