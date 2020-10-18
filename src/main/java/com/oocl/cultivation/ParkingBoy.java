@@ -33,6 +33,15 @@ public class ParkingBoy {
         if(parkingTicket == null){
             throw new UnrecognizedTicketException("Please provide your parking ticket");
         }
-        return parkingLot.fetch(parkingTicket);
+
+        return Optional.ofNullable(parkingLotList).map(lots -> {
+            for (ParkingLot lot:lots) {
+                if (lot.getParkingTicketCarMap().containsKey(parkingTicket)) {
+                    return lot;
+                }
+            }
+            throw new UnrecognizedTicketException("Unrecognized Parking Ticket");
+        }).orElse(parkingLot).fetch(parkingTicket);
+//        return parkingLot.fetch(parkingTicket);
     }
 }

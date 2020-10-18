@@ -39,4 +39,8 @@ public class ParkingLot {
     public void setLotCapacity(int lotCapacity) {
         this.lotCapacity = lotCapacity;
     }
+
+    public Map<ParkingTicket,Car> getParkingTicketCarMap(){
+        return parkingTicketCarMap;
+    }
 }
